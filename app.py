@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+cors = CORS(app)
 
 # Load the GeoJSON data into a GeoDataFrame
 desa = gpd.read_file('static/data.geojson')
@@ -59,4 +59,4 @@ def btsGeojson():
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5000, host='0.0.0.0')
